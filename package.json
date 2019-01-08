@@ -1,6 +1,6 @@
 {
   "name": "afr-scrapy",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "a node scraper",
   "repository": {
     "type" : "git",
