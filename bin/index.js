@@ -2,28 +2,43 @@
 const curl = require('curl');
 const colors = require('colors');
 const argv = require('yargs').argv;
-const os = require("os")
-const path = require('path')
+const os = require('os');
+const path = require('path');
 const fs = require('fs');
+const util = require('util');
+const Spinner = require('cli-spinner').Spinner;
 
-const desk = path.join(os.homedir(), "Desktop");
+const spinner = new Spinner('processing.. %s');
+const desk = path.join(os.homedir(), 'Desktop');
 const url = `${argv.c}`;
-// 'http://royalentertainers.com/portfolio/with-text/five-columns-grid/'
 
-const characters = async x => {
-	const article = document.querySelectorAll('.mix');
-};
-
+spinner.setSpinnerString('|/-\\');
+spinner.start();
 const scrape = curl.get(url, function(err, response, body) {
 	if (err) {
-		console.log(colors.red("------------------------"));
-		console.log(colors.yellow("No valid url please enter a valid url following the -c flag... \nSuch as:\nscrape -c https://google.com"));
-		console.log(colors.green(err));
+		console.log(
+			colors.red(
+				'  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  '
+			)
+		);
+		console.log(
+			colors.yellow(
+				'\nNo valid url please enter a valid url following the -c flag... \nSuch as:\nscrape -c https://google.com'
+			)
+		);
+		console.log(
+			'\n  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  '
+		);
 	} else {
-		console.log(colors.green(response));
+		spinner.stop();
+		console.log(colors.green("\n✅  Success!\n"));
 		fs.writeFile(`${desk}/index-${Date.now()}.html`, body, function(err) {
 			if (err) return console.log(err);
-			console.log(colors.magenta('Just made a html document!\nCheck your desktop?'));
+			console.log(
+				colors.magenta(
+					`👍  Just made a html document from: ${colors.cyan(url)}\n👁️  ${colors.yellow("Check your desktop?")}`
+				)
+			);
 		});
 	}
 });
