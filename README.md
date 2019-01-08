@@ -9,7 +9,7 @@ npm i -g afr-scrapy
 ```
 
 # Just Scrape it!
-![scrapy gif](./scrapy.gif)
+![scrapy gif](https://imgur.com/a/mwvlBzP)
 Use it by giving it a url with the -c flag
 Like so:
 ```javascript
