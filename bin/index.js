@@ -9,8 +9,12 @@ const util = require('util');
 const Spinner = require('cli-spinner').Spinner;
 
 const spinner = new Spinner('processing.. %s');
+const platform = os.platform();
 const desk = path.join(os.homedir(), 'Desktop');
 const url = `${argv.c}`;
+
+console.log(typeof desk)
+
 
 spinner.setSpinnerString('|/-\\');
 spinner.start();
@@ -29,14 +33,17 @@ const scrape = curl.get(url, function(err, response, body) {
 		console.log(
 			'\n  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  '
 		);
+		spinner.stop();
 	} else {
 		spinner.stop();
-		console.log(colors.green("\n✅  Success!\n"));
+		console.log(colors.green('\n✅  Success!\n'));
 		fs.writeFile(`${desk}/index-${Date.now()}.html`, body, function(err) {
 			if (err) return console.log(err);
 			console.log(
 				colors.magenta(
-					`👍  Just made a html document from: ${colors.cyan(url)}\n👁️  ${colors.yellow("Check your desktop?")}`
+					`👍  Just made a html document from: ${colors.cyan(
+						url
+					)}\n👁️  ${colors.yellow('Check your desktop?')}`
 				)
 			);
 		});
