@@ -18,11 +18,12 @@ console.log(typeof desk)
 
 spinner.setSpinnerString('|/-\\');
 spinner.start();
-const scrape = curl.get(url, function(err, response, body) {
+const page = curl.get(url, function(err, response, body) {
 	if (err) {
+		spinner.stop();
 		console.log(
 			colors.red(
-				'  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  '
+				'\n  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  '
 			)
 		);
 		console.log(
@@ -33,7 +34,6 @@ const scrape = curl.get(url, function(err, response, body) {
 		console.log(
 			'\n  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  '
 		);
-		spinner.stop();
 	} else {
 		spinner.stop();
 		console.log(colors.green('\n✅  Success!\n'));
