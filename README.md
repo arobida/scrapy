@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/arobida/scrapy.svg?branch=master)](https://travis-ci.com/arobida/scrapy)
 # Page Scraper
 just a simple node html scraper why?
 good question: I built it to make copies of pages I would like to rebuild and show to clients. It will go to that page read the html and make a exact copy to your desktop! I know there are extensions that do this but... its nodejs and its a fast and zippy cli app so why not?
